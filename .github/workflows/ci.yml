@@ -1,0 +1,62 @@
+name: ESDA
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  doors:
+    name: ${{ matrix.os }} · ${{ matrix.mode }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        mode: [stdlib, crosscheck]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install audited libraries (S4 cross-check)
+        if: matrix.mode == 'crosscheck'
+        run: python3 -m pip install cryptography coincurve dash_hash
+      - name: Run the seven doors + genesis proof
+        env:
+          ESDA_REQUIRE_CROSSCHECK: ${{ matrix.mode == 'crosscheck' && '1' || '0' }}
+          ESDA_REQUIRE_X11: ${{ matrix.mode == 'crosscheck' && '1' || '0' }}
+        run: ./run.sh
+      - name: Secret-comparison audit (S2)
+        run: python3 tools/audit_secret_compares.py esda_protocol.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: esda-${{ matrix.os }}-${{ matrix.mode }}
+          path: |
+            esda_output.txt
+            esda_results.json
+            genesis_output.txt
+            genesis_results.json
+
+  package:
+    name: pip install · ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install from source and run the esda command
+        run: |
+          python3 -m venv "$RUNNER_TEMP/venv"
+          "$RUNNER_TEMP/venv/bin/pip" install .
+          cd "$RUNNER_TEMP"
+          ESDA_BLOCKS=20000 "$RUNNER_TEMP/venv/bin/esda"
+          test -s esda_output.txt && test -s esda_results.json

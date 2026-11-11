@@ -1,0 +1,19 @@
+__pycache__/
+*.pyc
+*.bak
+*.bak-*
+run_log.txt
+.DS_Store
+# local-only, never published
+_to_delete/
+logs/
+pem/
+# build / test output
+build/
+dist/
+*.egg-info/
+*.db
+*.db-wal
+*.db-shm
+# local working notes (status, outreach drafts)
+release/

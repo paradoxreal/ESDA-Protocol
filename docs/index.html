@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PARADOX · ESDA Protocol</title>
+<meta name="description" content="ESDA Protocol: a local-first cryptography workbench. One Python file, standard library only, runs offline.">
+<style>
+  :root { --ink:#16181d; --muted:#5b6170; --line:#e3e5ea; --bg:#fbfbfc; --accent:#2f5bd3; }
+  @media (prefers-color-scheme: dark) { :root { --ink:#e8eaef; --muted:#9aa1b1; --line:#2a2e37; --bg:#111318; --accent:#86a6ff; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 56px 24px 72px; }
+  .mark { letter-spacing:.32em; font-weight:700; font-size:13px; color:var(--muted); }
+  h1 { font-size: 40px; line-height:1.15; margin: 10px 0 12px; }
+  h2 { font-size: 22px; margin: 44px 0 10px; }
+  p.lede { font-size: 19px; color: var(--muted); margin: 0 0 20px; }
+  .warn { border-left: 3px solid var(--accent); padding: 10px 16px; background: color-mix(in srgb, var(--accent) 7%, transparent); }
+  .tools { display:grid; gap:16px; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); margin-top: 16px; }
+  .tool { border:1px solid var(--line); border-radius:10px; padding:16px 18px; }
+  .tool h3 { margin:0 0 4px; font-size:17px; }
+  .tool .door { font-size:13px; color:var(--muted); margin-bottom:8px; }
+  .tool p { margin:0; font-size:15px; }
+  pre { background: color-mix(in srgb, var(--ink) 6%, transparent); padding: 14px 16px; border-radius: 8px; overflow-x:auto; font-size:14px; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+  ul { padding-left: 20px; }
+  a { color: var(--accent); }
+  footer { margin-top: 56px; padding-top: 18px; border-top:1px solid var(--line); color:var(--muted); font-size:14px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="mark">PARADOX</div>
+  <h1>ESDA Protocol</h1>
+  <p class="lede">A local-first cryptography workbench. One Python file, standard library only, no network required. It runs 41 tests across seven doors and prints exactly what passed.</p>
+  <p class="warn">Research and teaching code. Not independently audited. Not constant-time. Do not use it to protect real funds or real keys.</p>
+
+  <h2>Three human tools</h2>
+  <div class="tools">
+    <div class="tool">
+      <h3>Split-Key Vault</h3>
+      <div class="door">Door 1 · Shamir secret sharing</div>
+      <p>Split a secret into 5 shares so any 3 rebuild it and any 2 reveal nothing. Give shares to people you trust; no single person holds the whole thing.</p>
+    </div>
+    <div class="tool">
+      <h3>Tamper-Proof Diary</h3>
+      <div class="door">Door 2 · SHA-256 hash chain</div>
+      <p>Each entry is chained to the last, so one changed byte is caught. Merkle proofs show a single entry is in the diary without sharing the rest. The on-disk version survives a crash mid-write.</p>
+    </div>
+    <div class="tool">
+      <h3>Offline Brain</h3>
+      <div class="door">Door 5 · local AI check</div>
+      <p>An optional check for a local Ollama model on your own machine, so questions about your data never leave it. Skipped when it's off.</p>
+    </div>
+  </div>
+
+  <h2>Run it</h2>
+<pre><code>git clone https://github.com/Paradox-OS/ESDA-Protocol
+cd ESDA-Protocol
+./run.sh</code></pre>
+  <p>Optional: <code>pip install cryptography coincurve</code> turns on the cross-checks that compare ESDA's math against OpenSSL and libsecp256k1.</p>
+
+  <h2>Honest boundaries</h2>
+  <ul>
+    <li>The wall is 2<sup>128</sup>. Nothing here breaks SHA-256, RSA-2048 or secp256k1, and nothing here claims to.</li>
+    <li>A hash chain is tamper-evident only when its head hash is stored somewhere an attacker can't reach.</li>
+    <li>This page has no accounts, no analytics and no cookies.</li>
+  </ul>
+
+  <h2>Report a problem</h2>
+  <p>Security issues: use <a href="https://github.com/Paradox-OS/ESDA-Protocol/security">private vulnerability reporting</a>. Everything else: <a href="https://github.com/Paradox-OS/ESDA-Protocol/issues">Issues</a>.</p>
+
+  <footer>Branden Duffield · PARADOX · MIT License · Encryption never dies. It only gets stronger.</footer>
+</main>
+</body>
+</html>

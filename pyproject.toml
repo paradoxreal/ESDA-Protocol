@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "esda-protocol"
+version = "1.1.0"
+description = "Local-first cryptography workbench: seven test doors (Shamir, hash-chained ledger with Merkle proofs, secp256k1, RSA-2048, SHA-256). Teaching code, not audited."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.9"
+authors = [{ name = "Branden Duffield" }]
+dependencies = []
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Operating System :: MacOS",
+  "Operating System :: POSIX :: Linux",
+  "Topic :: Security :: Cryptography",
+  "Intended Audience :: Education",
+  "Development Status :: 4 - Beta",
+]
+
+[project.optional-dependencies]
+crosscheck = ["cryptography>=42", "coincurve>=20"]
+
+[project.urls]
+Source = "https://github.com/Paradox-OS/ESDA-Protocol"
+Issues = "https://github.com/Paradox-OS/ESDA-Protocol/issues"
+
+[project.scripts]
+esda = "esda_protocol:main"
+
+[tool.setuptools]
+py-modules = ["esda_protocol"]

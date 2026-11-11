@@ -1,0 +1,264 @@
+{
+  "version": "Era 2, v1.1.0",
+  "run_at": "2026-11-11 19:37:58 UTC",
+  "results": [
+    {
+      "door": 1,
+      "test": "3-of-5 reconstruct (random subset [1, 4, 5])",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "door": 1,
+      "test": "all 5 shares reconstruct",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "door": 1,
+      "test": "2 shares do NOT recover secret",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "door": 1,
+      "test": "one share of 0x00 vs 0xFF statistically indistinguishable",
+      "status": "PASS",
+      "detail": "total variation distance 0.063 over 20,000 splits"
+    },
+    {
+      "door": 2,
+      "test": "write 1,000,000 blocks in RAM",
+      "status": "PASS",
+      "detail": "1.10 s"
+    },
+    {
+      "door": 2,
+      "test": "verify full chain against head",
+      "status": "PASS",
+      "detail": "0.84 s"
+    },
+    {
+      "door": 2,
+      "test": "single-byte tamper detected",
+      "status": "PASS",
+      "detail": "broken at block 500000"
+    },
+    {
+      "door": 2,
+      "test": "full-rewrite attack caught by anchored head",
+      "status": "PASS",
+      "detail": "chain alone is NOT enough \u2014 publish the head"
+    },
+    {
+      "door": 2,
+      "test": "original chain unaffected by clone tamper",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "door": 2,
+      "test": "Merkle proofs verify at every position, tree sizes 1\u201364",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "door": 2,
+      "test": "Merkle inclusion: one block proven without sharing the chain",
+      "status": "PASS",
+      "detail": "block 92,626: 20 hashes (640 B) instead of 1,000,000 blocks \u00b7 tree built in 1.02 s"
+    },
+    {
+      "door": 2,
+      "test": "Merkle proof rejects tampered block, wrong position, altered proof",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "door": 2,
+      "test": "Merkle domain separation: an internal node cannot pose as a leaf",
+      "status": "PASS",
+      "detail": "0x00 leaf / 0x01 node prefixes (RFC 6962)"
+    },
+    {
+      "door": 2,
+      "test": "WAL ledger: kill -9 mid-write recovers to last commit",
+      "status": "PASS",
+      "detail": "killed with 968,200 B of uncommitted WAL frames on disk \u00b7 reopened: 500 blocks = last commit 500, integrity ok, head matches, appends resume"
+    },
+    {
+      "door": 3,
+      "test": "fast-forward matches naive loop at n = 10,000,000",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "door": 3,
+      "test": "matches closed form a^n\u00b7x + b(a^n\u22121)/(a\u22121)",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "door": 3,
+      "test": "timing",
+      "status": "PASS",
+      "detail": "loop 1.50 s vs fast 11.5 \u00b5s \u2014 O(n) \u2192 O(log n); ratio grows with n"
+    },
+    {
+      "door": 3,
+      "test": "orbit certificate (m=10007) bounded by m",
+      "status": "PASS",
+      "detail": "cycle length 10006"
+    },
+    {
+      "door": 4,
+      "test": "1. generator G lies on y\u00b2 = x\u00b3 + 7",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "door": 4,
+      "test": "2. n\u00b7G = point at infinity",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "door": 4,
+      "test": "3. 2\u00b7G matches published test vector",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "door": 4,
+      "test": "4. (a+b)\u00b7G = a\u00b7G + b\u00b7G (random a, b)",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "door": 4,
+      "test": "5. Q + (\u2212Q) = infinity",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "door": 4,
+      "test": "6. CSPRNG private key in [1, n\u22121], pubkey on curve",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "door": 4,
+      "test": "7. SEC1 compress round-trip + off-curve point rejected",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "door": 4,
+      "test": "8. audited-library cross-check: ESDA d\u00b7G matches OpenSSL and libsecp256k1",
+      "status": "PASS",
+      "detail": "20 keys incl. 1, 2, 3, n\u22121 \u00b7 cryptography 50.0.2 (OpenSSL)"
+    },
+    {
+      "door": 5,
+      "test": "Ollama on localhost:11434",
+      "status": "PASS",
+      "detail": "x/flux2-klein:latest, qwen25-coder-local:latest, qwen2.5-coder:7b-instruct, nomic-embed-text:latest, hf.co/bartowski/Qwen2.5-Coder-7B-Instruct-GGUF:Q4_K_M, gemma4-12b-app:latest, gemma4:12b, claude:latest"
+    },
+    {
+      "door": 6,
+      "test": "1. generate 2048-bit key (Miller\u2013Rabin, 40 rounds)",
+      "status": "PASS",
+      "detail": "0.57 s"
+    },
+    {
+      "door": 6,
+      "test": "2. n = p \u00d7 q, exactly 2048 bits, p \u2260 q",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "door": 6,
+      "test": "3. e\u00b7d \u2261 1 (mod \u03bb(n))",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "door": 6,
+      "test": "4. CRT parameters dP, dQ, qInv consistent",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "door": 6,
+      "test": "5. (m^e)^d \u2261 m round-trip (textbook RSA \u2014 math check only)",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "door": 6,
+      "test": "6. RSASSA-PKCS1-v1_5 / SHA-256 sign + verify, tampered message rejected",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "door": 6,
+      "test": "7. the wall: 64-bit toy modulus factors, 2048-bit does not",
+      "status": "PASS",
+      "detail": "64-bit in 79.6 ms \u00b7 RSA-2048 \u2248 112-bit security (NIST SP 800-57)"
+    },
+    {
+      "door": 6,
+      "test": "8a. OpenSSL interop: ESDA sig verifies in OpenSSL, OpenSSL sig verifies in ESDA",
+      "status": "PASS",
+      "detail": "OpenSSL 4.1.0 23 Oct 2026 (Library: OpenSSL 4.1.0 23 Oct 2026) (/opt/homebrew/bin/openssl) \u00b7 key check ok \u00b7 ESDA\u2192OpenSSL ok \u00b7 OpenSSL\u2192ESDA ok \u00b7 signature bytes identical yes (PKCS#1 v1.5 is deterministic)"
+    },
+    {
+      "door": 6,
+      "test": "8b. OpenSSL interop: ESDA sig verifies in OpenSSL, OpenSSL sig verifies in ESDA",
+      "status": "PASS",
+      "detail": "OpenSSL 3.5.9 29 Sep 2026 (Library: OpenSSL 3.5.9 29 Sep 2026) (/opt/homebrew/opt/openssl@3/bin/openssl) \u00b7 key check ok \u00b7 ESDA\u2192OpenSSL ok \u00b7 OpenSSL\u2192ESDA ok \u00b7 signature bytes identical yes (PKCS#1 v1.5 is deterministic)"
+    },
+    {
+      "door": 6,
+      "test": "8c. LibreSSL interop: ESDA sig verifies in LibreSSL, LibreSSL sig verifies in ESDA",
+      "status": "PASS",
+      "detail": "LibreSSL 3.3.6 (/usr/bin/openssl) \u00b7 key check ok \u00b7 ESDA\u2192LibreSSL ok \u00b7 LibreSSL\u2192ESDA ok \u00b7 signature bytes identical yes (PKCS#1 v1.5 is deterministic)"
+    },
+    {
+      "door": 6,
+      "test": "9. audited-library cross-check: cryptography signs with ESDA's key, identical bytes",
+      "status": "PASS",
+      "detail": "cryptography 50.0.2 \u00b7 key accepted \u00b7 ESDA\u2192lib ok \u00b7 lib\u2192ESDA ok \u00b7 bytes identical yes \u00b7 tamper rejected yes"
+    },
+    {
+      "door": 7,
+      "test": "1\u20133. NIST FIPS 180-4 vectors (empty, abc, two-block)",
+      "status": "PASS",
+      "detail": "pure-Python and hashlib both match"
+    },
+    {
+      "door": 7,
+      "test": "4. one million 'a' vector",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "door": 7,
+      "test": "5. independent implementation = hashlib on 200 random inputs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "door": 7,
+      "test": "6. avalanche: 1 input bit flips \u2248 128 of 256 output bits",
+      "status": "PASS",
+      "detail": "average 127.6"
+    },
+    {
+      "door": 7,
+      "test": "7. the wall: brute-force cost at this machine's measured rate",
+      "status": "PASS",
+      "detail": "3,195,562 H/s \u2192 2^128 \u2248 3.4e+24 yrs, 2^256 preimage \u2248 1.1e+63 yrs"
+    }
+  ]
+}
