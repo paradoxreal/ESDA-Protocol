@@ -93,7 +93,7 @@ Rules that don't change: never claim to break SHA-256, RSA-2048 or secp256k1; ne
 
 | Phase | Work | Done when |
 |---|---|---|
-| I1 — Home | GitHub organization `Paradox-OS`, repo `ESDA-Protocol`, MIT or Apache-2.0 license, README with real `esda_output.txt` from the M2. | Repo public |
+| I1 — Home | GitHub organization `paradoxreal`, repo `ESDA-Protocol`, MIT or Apache-2.0 license, README with real `esda_output.txt` from the M2. | Repo public |
 | I2 — CI | GitHub Actions running `./run.sh` on macOS and Linux for every push. | Green on both |
 | I3 — Site | A plain GitHub Pages site for Paradox OS explaining the three human tools: Split-Key Vault, Tamper-Proof Diary, Offline Brain. | Site live |
 | I4 — Launch | Honest posts to r/cryptography, r/privacy and Hacker News. Answer questions in the repo's Issues and Discussions. | First outside issue answered |

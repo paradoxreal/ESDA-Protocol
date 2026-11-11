@@ -25,8 +25,8 @@ classifiers = [
 crosscheck = ["cryptography>=42", "coincurve>=20"]
 
 [project.urls]
-Source = "https://github.com/Paradox-OS/ESDA-Protocol"
-Issues = "https://github.com/Paradox-OS/ESDA-Protocol/issues"
+Source = "https://github.com/paradoxreal/ESDA-Protocol"
+Issues = "https://github.com/paradoxreal/ESDA-Protocol/issues"
 
 [project.scripts]
 esda = "esda_protocol:main"
