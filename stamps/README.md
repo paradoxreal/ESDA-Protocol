@@ -6,7 +6,7 @@
 | Manifest | `ESDA_v1.1.0_MANIFEST.txt` — SHA-256 of all 18 tracked files at that commit |
 | Manifest SHA-256 | `d4dbd50950d87ecac63fc8d8dc00b0ecee0ea6cfb5aff6433ba2d6edc41720fe` |
 | Proof | `ESDA_v1.1.0_MANIFEST.txt.ots` (OpenTimestamps) |
-| Submitted | 2026-11-11 ~12:57 PST (20:57 UTC) to 4 calendars: alice.btc.calendar.opentimestamps.org, bob (b.pool), finney.calendar.eternitywall.com, ots.btc.catallaxy.com |
+| Submitted | 2026-11-11 ~12:57 local time, UTC−7 (19:57 UTC) to 4 calendars: alice.btc.calendar.opentimestamps.org, bob (b.pool), finney.calendar.eternitywall.com, ots.btc.catallaxy.com |
 | Status at submission | **PENDING** — not yet in a Bitcoin block |
 | Confirmed | **Bitcoin block 975471** (`0000000000000000000189ded92da794e9c183e0c401e39d3ab99d068db9d99d`), block time 2026-11-11 20:00:47 UTC, via the bob calendar. `.ots` upgraded 2026-11-11; its merkle root was checked against that block header. |
 
