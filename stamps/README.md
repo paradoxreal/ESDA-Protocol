@@ -8,6 +8,7 @@
 | Proof | `ESDA_v1.1.0_MANIFEST.txt.ots` (OpenTimestamps) |
 | Submitted | 2026-11-11 ~12:57 PST (20:57 UTC) to 4 calendars: alice.btc.calendar.opentimestamps.org, bob (b.pool), finney.calendar.eternitywall.com, ots.btc.catallaxy.com |
 | Status at submission | **PENDING** — not yet in a Bitcoin block |
+| Confirmed | **Bitcoin block 975471** (`0000000000000000000189ded92da794e9c183e0c401e39d3ab99d068db9d99d`), block time 2026-11-11 20:00:47 UTC, via the bob calendar. `.ots` upgraded 2026-11-11; its merkle root was checked against that block header. |
 
 Only the manifest hash was sent to the calendars. No file contents, no keys.
 
