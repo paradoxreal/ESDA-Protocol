@@ -105,3 +105,4 @@ Rules that don't change: never claim to break SHA-256, RSA-2048 or secp256k1; ne
 The workbench runs offline and collects no data, so privacy law (PIPEDA) doesn't apply to the tool itself. That changes if the site ever adds accounts, analytics or a mailing list. Anything involving selling tokens or holding crypto for others falls under securities and FINTRAC rules; get a lawyer's review before going there. Not legal advice.
 
 *Branden Duffield · Paradox OS · ENCRYPTION NEVER DIES. IT ONLY GETS STRONGER.*
+# brian
