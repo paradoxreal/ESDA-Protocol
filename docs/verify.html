@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PARADOX · ESDA Protocol · Verify v1.1.0</title>
+<meta name="description" content="How to verify the ESDA Protocol v1.1.0 release: file checksums, the release manifest, and its Bitcoin timestamp in block 975471.">
+<style>
+  :root { --ink:#16181d; --muted:#5b6170; --line:#e3e5ea; --bg:#fbfbfc; --accent:#2f5bd3; --ok:#1f8a4c; --bad:#c0392b; }
+  @media (prefers-color-scheme: dark) { :root { --ink:#e8eaef; --muted:#9aa1b1; --line:#2a2e37; --bg:#111318; --accent:#86a6ff; --ok:#5fd08f; --bad:#ff7b6b; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+  main { max-width: 820px; margin: 0 auto; padding: 56px 24px 72px; }
+  .mark { letter-spacing:.32em; font-weight:700; font-size:13px; color:var(--muted); }
+  .mark a { color:inherit; text-decoration:none; }
+  h1 { font-size: 36px; line-height:1.15; margin: 10px 0 12px; }
+  h2 { font-size: 22px; margin: 44px 0 10px; }
+  p.lede { font-size: 19px; color: var(--muted); margin: 0 0 20px; }
+  .warn { border-left: 3px solid var(--accent); padding: 10px 16px; background: color-mix(in srgb, var(--accent) 7%, transparent); }
+  pre { background: color-mix(in srgb, var(--ink) 6%, transparent); padding: 14px 16px; border-radius: 8px; overflow-x:auto; font-size:14px; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.9em; }
+  table { width:100%; border-collapse: collapse; font-size:14px; }
+  th, td { text-align:left; padding:7px 8px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { color:var(--muted); font-weight:600; }
+  td code { word-break: break-all; }
+  .facts td:first-child { color:var(--muted); white-space:nowrap; width: 170px; }
+  ol li { margin-bottom: 6px; }
+  a { color: var(--accent); }
+  #drop { border:2px dashed var(--line); border-radius:10px; padding:26px 18px; text-align:center; color:var(--muted); cursor:pointer; }
+  #drop.over { border-color: var(--accent); color: var(--ink); }
+  #results div { margin-top:10px; font-size:14px; }
+  .ok { color: var(--ok); font-weight:600; }
+  .bad { color: var(--bad); font-weight:600; }
+  footer { margin-top: 56px; padding-top: 18px; border-top:1px solid var(--line); color:var(--muted); font-size:14px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="mark"><a href="./">PARADOX · ESDA PROTOCOL</a></div>
+  <h1>Verify v1.1.0</h1>
+  <p class="lede">Three checks you can run yourself: the download files match their published hashes, the code matches the release manifest, and that manifest is timestamped in the Bitcoin blockchain.</p>
+  <p class="warn">A timestamp proves the files existed by a certain time and haven't changed since. It says nothing about whether the code is secure. ESDA is research and teaching code: not independently audited, not constant-time.</p>
+
+  <h2>The facts</h2>
+  <table class="facts">
+    <tr><td>Release</td><td><a href="https://github.com/paradoxreal/ESDA-Protocol/releases/tag/v1.1.0">GitHub release v1.1.0</a>, tag at commit <code>7d544493bfcf0a7ccb2271669c47ac35cd590915</code></td></tr>
+    <tr><td>Stamped commit</td><td><code>800a1b0b6959a184cf647fa1f1aabf0daaeac8fe</code> (tree <code>a96833f66e39265203cbbd820b69edef2f382b29</code>)</td></tr>
+    <tr><td>Manifest</td><td><code>stamps/ESDA_v1.1.0_MANIFEST.txt</code>, the SHA-256 of each of the 18 tracked files at the stamped commit</td></tr>
+    <tr><td>Manifest SHA-256</td><td><code>d4dbd50950d87ecac63fc8d8dc00b0ecee0ea6cfb5aff6433ba2d6edc41720fe</code></td></tr>
+    <tr><td>Bitcoin block</td><td><a href="https://mempool.space/block/0000000000000000000189ded92da794e9c183e0c401e39d3ab99d068db9d99d">975471</a>, block time 2026-11-11 20:00:47 UTC</td></tr>
+    <tr><td>Block merkle root</td><td><code>4f1796463fc1fc9d0618e595e95cd185ef5b55b7c88d7339911544e148b190dc</code></td></tr>
+    <tr><td>Proof file</td><td><code>stamps/ESDA_v1.1.0_MANIFEST.txt.ots</code> (OpenTimestamps)</td></tr>
+    <tr><td>Changed since stamp</td><td>Only repo links (<code>Paradox-OS</code> became <code>paradoxreal</code>) in README, CHRONICLE, docs and pyproject, plus the new publish workflow and the <code>stamps/</code> folder. <code>esda_protocol.py</code> is byte-identical.</td></tr>
+    <tr><td>PyPI</td><td>Not published yet. Install from the release files below.</td></tr>
+  </table>
+
+  <h2>1 · Check the download files</h2>
+  <table>
+    <tr><th>File (release asset)</th><th>SHA-256</th></tr>
+    <tr><td><code>esda_protocol-1.1.0-py3-none-any.whl</code></td><td><code>b905da568d7e5df3887d7b966efb51d82d789d5dd741dc9e84e52940c0edd1a4</code></td></tr>
+    <tr><td><code>esda_protocol-1.1.0.tar.gz</code></td><td><code>11c9f890f9bcdc76d981e2f29e2bdd6229b887a1573434ea59638e80626f42bc</code></td></tr>
+    <tr><td><code>ESDA_v1.1.0_MANIFEST.txt</code></td><td><code>d4dbd50950d87ecac63fc8d8dc00b0ecee0ea6cfb5aff6433ba2d6edc41720fe</code></td></tr>
+    <tr><td><code>ESDA_v1.1.0_MANIFEST.txt.ots</code></td><td><code>cc81d95b8323c8022c1e7ed407c5530bc9ae3a45a6af335f0e58ab2152b0ae7c</code></td></tr>
+  </table>
+<pre><code>gh release download v1.1.0 -R paradoxreal/ESDA-Protocol   # or download them from the release page
+shasum -a 256 -c SHA256SUMS                               # Linux: sha256sum -c SHA256SUMS</code></pre>
+
+  <p>Or drop files here to check them in your browser. Hashing runs locally with the Web Crypto API, and nothing is uploaded. This page checks the release files, the manifest, the proof, and all 18 files in the manifest.</p>
+  <div id="drop" tabindex="0">Drop files here, or click to choose</div>
+  <input id="pick" type="file" multiple hidden>
+  <div id="results"></div>
+
+  <h2>2 · Check the code against the manifest</h2>
+<pre><code>git clone https://github.com/paradoxreal/ESDA-Protocol
+cd ESDA-Protocol
+git show v1.1.0:stamps/ESDA_v1.1.0_MANIFEST.txt &gt; /tmp/esda_manifest.txt
+git checkout 800a1b0b6959a184cf647fa1f1aabf0daaeac8fe
+grep -v '^#' /tmp/esda_manifest.txt | shasum -a 256 -c    # expect 18 lines ending in OK</code></pre>
+  <p>Do this in a fresh clone. Running <code>./run.sh</code> first rewrites <code>esda_output.txt</code> and the other result files, and then those four lines won't match.</p>
+
+  <h2>3 · Check the Bitcoin timestamp</h2>
+<pre><code>pip install opentimestamps-client
+ots --no-bitcoin verify ESDA_v1.1.0_MANIFEST.txt.ots
+# prints: check that Bitcoin block 975471 has merkleroot 4f179646…48b190dc</code></pre>
+  <ol>
+    <li>Look up <a href="https://mempool.space/block/0000000000000000000189ded92da794e9c183e0c401e39d3ab99d068db9d99d">block 975471</a> in any block explorer, or on your own node with <code>bitcoin-cli getblockheader $(bitcoin-cli getblockhash 975471)</code>.</li>
+    <li>Its merkle root must equal <code>4f1796463fc1fc9d0618e595e95cd185ef5b55b7c88d7339911544e148b190dc</code>.</li>
+    <li>If you run a Bitcoin node, <code>ots verify ESDA_v1.1.0_MANIFEST.txt.ots</code> does both steps for you.</li>
+  </ol>
+  <p>Keep the manifest and the <code>.ots</code> file together. Either one alone proves nothing.</p>
+
+  <h2>Manifest contents</h2>
+  <table id="manifest"><tr><th>File at 800a1b0</th><th>SHA-256</th></tr></table>
+
+  <footer>Branden Duffield · PARADOX · MIT License · <a href="./">ESDA Protocol home</a> · <a href="https://github.com/paradoxreal/ESDA-Protocol">Source</a></footer>
+</main>
+<script>
+const KNOWN = {
+  "b905da568d7e5df3887d7b966efb51d82d789d5dd741dc9e84e52940c0edd1a4": "esda_protocol-1.1.0-py3-none-any.whl (release asset)",
+  "11c9f890f9bcdc76d981e2f29e2bdd6229b887a1573434ea59638e80626f42bc": "esda_protocol-1.1.0.tar.gz (release asset)",
+  "d4dbd50950d87ecac63fc8d8dc00b0ecee0ea6cfb5aff6433ba2d6edc41720fe": "ESDA_v1.1.0_MANIFEST.txt (the stamped manifest)",
+  "cc81d95b8323c8022c1e7ed407c5530bc9ae3a45a6af335f0e58ab2152b0ae7c": "ESDA_v1.1.0_MANIFEST.txt.ots (Bitcoin proof)"
+};
+const MANIFEST = [
+  ["108af5e8bc06435c2a682a57d1b850bf4406b97bce45c92cbd6401a3af811cbc", ".github/workflows/ci.yml"],
+  ["389210ff0b8285ee40476ec82c4e72f8717fc08a9075e7bf645fb896b59d17e8", ".gitignore"],
+  ["77e5a678a5473315639cce5666053c5a8d7e755076b3dc4e13a29707bd9d803f", "CHRONICLE.md"],
+  ["73379f6beda5ea41560c0338cea4fa0d15c271040b6a7137adc415b964f278b5", "LICENSE"],
+  ["0d2a181b953fa29676bcdbdada194ce72b7e036a5225928d37563e6efd03f74e", "README.md"],
+  ["a5b7dfad2703d4d6ed30852a10cc2a11fc8c857f8d5a97893c3fdbf1591c60a6", "SECURITY.md"],
+  ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "docs/.nojekyll"],
+  ["48042aeffdbe0ae5121e376b30cd4aaf92d99df8f792c9b77d52b78d6f889e20", "docs/index.html"],
+  ["5d2b8714f480bdda3cea8199fb50b00d2d2bc225bd385ec4763d3d68c0c81154", "esda_output.txt"],
+  ["94e9f9ef80375edb82efb36a62cbd57a997dfdc593044fbd9f734cb0355c3331", "esda_protocol.py"],
+  ["2464ca3d9b90ccef97c5f8d66f9d15bbe5e6e869cd0d3042865c65494f20bfe2", "esda_results.json"],
+  ["b54db037341b4c3a520032de2c123b456370dfb14a9ea4480f936969b216fb56", "genesis_output.txt"],
+  ["e4ef9af4f85f0f4d43d440f37ffd13c3f4afe03c211db3a97c7368b85791ca2e", "genesis_results.json"],
+  ["b3a5c8e10926614436130653b78fd8cce3b943426c4d78f2c5d900c2ef4eec6d", "pyproject.toml"],
+  ["a9b93e016d25cab08d393c52e5a633b7c2b0f7b658ccdc3e68fe6ac0e7c5aaad", "run.sh"],
+  ["e567fbc842f0df6b1fe90d7ac8bd94cfd1fe428d2c330c2e632e5017c448b5b2", "tools/audit_secret_compares.py"],
+  ["05bdb12be4dab08bdebc8e504de11e6fcac4febda71277e88601357fab36c1e4", "tools/eth_mainnet_alloc.rlp"],
+  ["79b0ad71bba1c5826ab2dd718084493c151e8d1bf75e37c1827931ec30bba220", "tools/genesis_proof.py"]
+];
+const table = document.getElementById("manifest");
+for (const [h, f] of MANIFEST) {
+  KNOWN[h] = KNOWN[h] || f + " (in the manifest, at commit 800a1b0)";
+  const tr = document.createElement("tr");
+  const a = document.createElement("td"); a.innerHTML = "<code></code>"; a.firstChild.textContent = f;
+  const b = document.createElement("td"); b.innerHTML = "<code></code>"; b.firstChild.textContent = h;
+  tr.append(a, b); table.append(tr);
+}
+const drop = document.getElementById("drop"), pick = document.getElementById("pick"), out = document.getElementById("results");
+async function check(files) {
+  if (!crypto.subtle) { out.textContent = "This browser can't hash files here (Web Crypto needs https). Use the shasum command above."; return; }
+  for (const file of files) {
+    const row = document.createElement("div");
+    row.textContent = file.name + ": hashing…"; out.prepend(row);
+    try {
+      const buf = await file.arrayBuffer();
+      const hex = [...new Uint8Array(await crypto.subtle.digest("SHA-256", buf))].map(x => x.toString(16).padStart(2, "0")).join("");
+      const hit = KNOWN[hex];
+      row.innerHTML = "";
+      const name = document.createElement("strong"); name.textContent = file.name;
+      const verdict = document.createElement("span");
+      verdict.className = hit ? "ok" : "bad";
+      verdict.textContent = hit ? " ✓ matches " + hit : " ✗ no match. This file is not one of the published v1.1.0 files.";
+      const hash = document.createElement("div"); hash.innerHTML = "<code></code>"; hash.firstChild.textContent = hex;
+      row.append(name, verdict, hash);
+    } catch (e) { row.textContent = file.name + ": could not read file (" + e.message + ")"; }
+  }
+}
+drop.addEventListener("click", () => pick.click());
+drop.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") pick.click(); });
+pick.addEventListener("change", () => check(pick.files));
+drop.addEventListener("dragover", e => { e.preventDefault(); drop.classList.add("over"); });
+drop.addEventListener("dragleave", () => drop.classList.remove("over"));
+drop.addEventListener("drop", e => { e.preventDefault(); drop.classList.remove("over"); check(e.dataTransfer.files); });
+</script>
+</body>
+</html>
